@@ -1,4 +1,21 @@
+## Markdown
+This is _italic_ or *italic*, **bold** or __bold__, ***bold italic*** or ___bold italic___,
+~~striked~~ and *~~striked~~* and **~~striked~~**. As far as we know, Markdown
+==highlights== are not parsed.
+
 ## Vector shorthands
+
+We provide three different vector styles:
+
+-   `\ArrowVector` $\ArrowVector{a}$, using the `\vv` command from `esvect`;
+-   `\LongVector` $\LongVector{a}$, using `\overrightarrow`;
+-   `\BoldVector` $\BoldVector{a}$, using `\mathbf`.
+
+Each document has the `\vec` command set to one of these: usually we
+do not want to mix them and it is nice to have a global style.
+Here, it is currently `\vec{a}` is rendered as $\vec{a}$.
+
+### Common operators
 Gradient, divergence and rotation operators have their own shorthands, including auto-vectorizing ones:
 ```
 $${
@@ -19,7 +36,7 @@ For brevity all `\Derivative`-class shorthands can be written with `Drv` instead
 
 ### Simple derivative
 The simplest use case is a univariate derivative, possibly of higher order.
-This is written as `\Derivative[order]{dependent}{independent}`, for instance
+This is conveniently written as `\Derivative[order]{dependent}{independent}`, for instance
 ```
 $$
     \Derivative{f}{x} < \Derivative[2]{g}{x} = \DrvE{x} \Drv{g}{x}
@@ -77,15 +94,11 @@ Compare this with the standard `\int\limits_{lower}^{upper} integrand\,\mathrm{d
 Simple indefinite integral is
 ```
 $$
-    \Int{x}{x}
-    \QText{or}
-    \Int{\left(x^2 + x + \ln x\right)}{x}
+    \Int{x}{x} \QText{or} \Int{\left(x^2 + x + \ln x\right)}{x}
 $$
 ```
 $$
-    \Int{x}{x}
-    \QText{or}
-    \Int{\left(x^2 + x + \ln x\right)}{x}
+    \Int{x}{x} \QText{or} \Int{\left(x^2 + x + \ln x\right)}{x}
 $$
 
 If integration limits are supplied they are rendered as
@@ -94,7 +107,6 @@ $$
     \Int[0][1]{x}{x}
 $$
 ```
-
 $$
     \Int[0][1]{x}{x}
 $$
@@ -118,9 +130,36 @@ Use `\OIntD[domain]{integrand}{variable}` for dot product,
 or `\OIntDV[domain]{integrand}{variable}` as a vector shorthand:
 ```
 $$
-    \OIntD{\left(\vec{c} \times \vec{d}\right)}{\vec{u}} \QText{and} \OIntDV[\pdiff \Omega]{B}{l} = 0
+    \OIntD{\left(\vec{c} \times \vec{d}\right)}{\vec{u}} \QText{and} \OIntDV[\ell]{B}{l} = 0
 $$
 ```
 $$
-    \OIntD{\left(\vec{c} \times \vec{d}\right)}{\vec{u}} \QText{and} \OIntDV[\pdiff \Omega]{B}{l} = 0
+    \OIntD{\left(\vec{c} \times \vec{d}\right)}{\vec{u}} \QText{and} \OIntDV[\ell]{B}{l} = 0
 $$
+
+### Two-dimensional integral
+This notation extends to higher dimensions, with two-dimensional integral with two
+differentials being written as
+```
+$$
+    \IInt[0, 0][1, 1]{5x^2 - y^3}{x}{y}
+$$
+```
+$$
+    \IInt[0, 0][1, 1]{5x^2 - y^3}{x}{y}
+$$
+
+If only a single differential is desired, the `I` version does just that:
+```
+$$
+    \IIntI[\vec{S}]{\left(x + y\right)}{\vec{S}}
+$$
+```
+$$
+    \IIntI[\vec{S}]{\left(x + y\right)}{\vec{S}}
+$$
+
+$$
+    \Abs{\PDrv{y}{x}}
+$$
+
