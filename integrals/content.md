@@ -7,13 +7,13 @@ This is _italic_ or *italic*, **bold** or __bold__, ***bold italic*** or ___bold
 
 We provide three different vector styles:
 
--   `\ArrowVector` $\ArrowVector{a}$, using the `\vv` command from `esvect`;
--   `\LongVector` $\LongVector{a}$, using `\overrightarrow`;
--   `\BoldVector` $\BoldVector{a}$, using `\mathbf`.
+-   `\ArrowVector` $\ArrowVector{a}$ and $\ArrowVector{x_{123}}$, using the `\vv` command from `esvect`;
+-   `\LongVector` $\LongVector{a}$ and $\LongVector{x_{123}}$, using `\overrightarrow`;
+-   `\BoldVector` $\BoldVector{a}$ and $\BoldVector{x_{123}}$, using `\mathbf` or `\symbf`.
 
-Each document has the `\vec` command set to one of these: usually we
-do not want to mix them and it is nice to have a global style.
-Here, it is currently `\vec{a}` is rendered as $\vec{a}$.
+Each document should have the `\vec` command re-set to one of these:
+usually we do not want to mix them and it is nice to have a global style.
+In this document, `\vec{a}` is rendered as $\vec{a}$.
 
 ### Common operators
 Gradient, divergence and rotation operators have their own shorthands, including auto-vectorizing ones:
@@ -32,7 +32,7 @@ $${
 
 ## Derivatives
 Derivatives are to be written with the `\*Derivative*` class shorthands.
-For brevity all `\Derivative`-class shorthands can be written with `Drv` instead.
+For brevity, all `\Derivative`-class shorthands can be written with `Drv` instead.
 
 ### Simple derivative
 The simplest use case is a univariate derivative, possibly of higher order.
@@ -63,11 +63,11 @@ $$
 Similar to [empty derivatives](#emptyd), DeGeŠ provides a parenthesised empty derivative
 ```
 $$
-    \DerivativeParen[2]{x}{x^3 - x^2 + 1} = \DrvP[2]{x}{x^3 - x^2 + 8}
+    \DerivativeParen[2]{x^3 - x^2 + 1}{x} = \DrvP[2]{x^3 - x^2 + 8}{x}
 $$
 ```
 $$
-    \DerivativeParen[2]{x}{x^3 - x^2 + 1} = \DrvP[2]{x}{x^3 - x^2 + 8}
+    \DerivativeParen[2]{x^3 - x^2 + 1}{x} = \DrvP[2]{x^3 - x^2 + 8}{x}
 $$
 
 ### Partial derivatives and finite differences
@@ -82,7 +82,8 @@ $$
 $$
 ```
 $$
-    \PDerivativeEmpty[2]{x}{f(x, y, z)} = \PDrvE[2]{x}{f(x, y, z)} \approx \FDrvE[2]{z}{f(x, y, z)}
+    \PDerivativeEmpty[2]{x}{f(x, y, z)} = \PDrvE[2]{x}{f(x, y, z)}
+    \approx \FDrvE[2]{z}{f(x, y, z)} \neq \UDrvE[3]{f(x)}
 $$
 
 ## Integrals
