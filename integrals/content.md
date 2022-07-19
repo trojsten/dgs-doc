@@ -49,7 +49,8 @@ $$
 ### Empty derivative {#emptyd}
 If the dependent is a complicated expression, it is customary to write
 it _after_ the derivative. This is done with the help of `\DerivativeEmpty`.
-The order of the arguments is reversed so that it matches the usual order
+The order of the arguments is reversed so that it matches the usual order.
+Note that it is possible to enclose the dependent in braces.
 ```
 $$
     \DerivativeEmpty[5]{x} f(x) = \DrvE[5]{x} f(x)
@@ -59,7 +60,7 @@ $$
     \DerivativeEmpty[5]{x} f(x) = \DrvE[5]{x} f(x)
 $$
 
-### Parenthesised derivative
+### Parenthesised derivative {#parend}
 Similar to [empty derivatives](#emptyd), DeGeŠ provides a parenthesised empty derivative
 ```
 $$
@@ -84,6 +85,27 @@ $$
 $$
     \PDerivativeEmpty[2]{x}{f(x, y, z)} = \PDrvE[2]{x}{f(x, y, z)}
     \approx \FDrvE[2]{z}{f(x, y, z)} \neq \UDrvE[3]{f(x)}
+$$
+
+### Evaluated derivatives
+Evaluation of an expression, such as a derivative, is done with `\Eval*` commands.
+```
+$$
+    \Eval{\Drv{x^2}{x}}{x = 1} = 2 \QText{and} \EvalP{\Drv{x^3}{x}}{x = 2} = 12
+$$
+```
+$$
+    \Eval{\Drv{x^2}{x}}{x = 1} = 2 \QText{and} \EvalP{\Drv{x^3}{x}}{x = 2} = 12
+$$
+
+For definite integrals this is done the same way,
+```
+$$
+    \Int[1][2]{x^2}{x} = \Eval{\frac{x^3}{3}}{1}[2] = \EvalP{\frac{x^3}{3}}{1}[2] = \frac{7}{3}
+$$
+```
+$$
+    \Int[1][2]{x^2}{x} = \Eval{\frac{x^3}{3}}{1}[2] = \EvalP{\frac{x^3}{3}}{1}[2] = \frac{7}{3}
 $$
 
 ## Integrals
@@ -143,11 +165,11 @@ This notation extends to higher dimensions, with two-dimensional integral with t
 differentials being written as
 ```
 $$
-    \IInt[0, 0][1, 1]{5x^2 - y^3}{x}{y}
+    \IInt[0,\ 0][1,\ 1]{5x^2 - y^3}{x}{y}
 $$
 ```
 $$
-    \IInt[0, 0][1, 1]{5x^2 - y^3}{x}{y}
+    \IInt[0,\ 0][1,\ 1]{5x^2 - y^3}{x}{y}
 $$
 
 If only a single differential is desired, the `I` version does just that:
